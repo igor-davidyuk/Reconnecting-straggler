@@ -1,6 +1,6 @@
 # Straggler getting delta model updates
 
-The experiment should be run with `test_hello_federation.sh`
+The experiment should be run with `run_experiment.sh`
 
 The following happens:
 1. Three cols are created,

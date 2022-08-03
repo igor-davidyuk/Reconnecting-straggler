@@ -3,9 +3,9 @@ set -e
 
 TEMPLATE=${1:-'keras_cnn_mnist'}  # ['torch_cnn_mnist', 'keras_cnn_mnist']
 FED_WORKSPACE=${2:-`pwd | sed 's#.*/##'`}   # This can be whatever unique directory name you want
-COL1=${3:-'one123dragons'}  # This can be any unique label (lowercase)
-COL2=${4:-'beta34unicorns'} # This can be any unique label (lowercase)
-COL3=${5:-'straggler'} # This can be any unique label (lowercase)
+COL1=${3:-'Regular_Col'}  # This can be any unique label (lowercase)
+COL2=${4:-'Straggler_Col'} # This can be any unique label (lowercase)
+COL3=${5:-'Connecting_later_Col'} # This can be any unique label (lowercase)
 
 FQDN=localhost
 # FQDN=${5:-$(hostname --all-fqdns | awk '{print $1}')}
@@ -60,7 +60,6 @@ create_collaborator() {
 
     # Create collaborator certificate request
     cd ${COL_DIRECTORY}/${FED_WORKSPACE}
-    echo '!!!!!!!!!!!!!!!!!!!!!!!!'$COL
     fx collaborator generate-cert-request -d ${DATA_PATH} -n ${COL} --silent # Remove '--silent' if you run this manually
 
     # Sign collaborator certificate 
@@ -125,7 +124,7 @@ fx collaborator start -n ${COL1} &
 cd ${COL2_DIRECTORY}/${FED_WORKSPACE}
 fx collaborator start -n ${COL2} &
 
-sleep 20
+sleep 25
 echo "\n\n\nSTARTING COL3\n\n\n"
 cd ${COL3_DIRECTORY}/${FED_WORKSPACE}
 fx collaborator start -n ${COL3}

@@ -99,12 +99,13 @@ class KerasCNN(KerasTaskRunner):
         # But all the other rounds it will be faster than the rest
         if col_data_path=='2':
             if round_num == 2: 
-                sleep_time = 70
+                sleep_time = 50
             else:
-                sleep_time = 3
+                sleep_time = 4
 
         print(F'\n\nHOLDING COL {col_name} DATA_PATH {col_data_path} '
             f'FOR {sleep_time} SECONDS ON ROUND {round_num}\n\n')
+
         for i in tqdm([0]*sleep_time, desc=f'Holding col {col_data_path}'):
             sleep(1)
         return results
